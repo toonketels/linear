@@ -27,7 +27,17 @@ describe('Vector', function(){
             }
 
             expect(foundItems).to.be.false;
-        })
+        });
+
+        // Note: since its an array, we still can modify it since item returns
+        //       a reference to the array. We're ok with this for now.
+        it('should be settable after the object has been created', function() {
+            var x = new Vector([3, 7, 2]);
+            expect(x.items).to.deep.equal([3,7,2]);
+
+            x.items = [1, 3];
+            expect(x.items).to.deep.equal([3, 7, 2]);
+        });
     });
 
     describe('size', function() {
