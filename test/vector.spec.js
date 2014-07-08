@@ -12,6 +12,24 @@ describe('Vector', function(){
         expect(a.items).to.deep.equal([12]);
     });
 
+    describe('items', function() {
+        it('should return the items in the vector', function() {
+            var a = new Vector([12,3, 44]);
+            expect(a.items).to.deep.equal([12,3,44]);
+        });
+
+        it('should not show up when iterating over the object', function() {
+            var x = new Vector([3, 7, 2]),
+                foundItems = false;
+
+            for(var prop in x) {
+                if (prop === 'items') foundItems = true;
+            }
+
+            expect(foundItems).to.be.false;
+        })
+    });
+
     describe('size', function() {
         it('should return the size of the vector', function() {
                 var a = new Vector([12, 6, 3]);
@@ -30,5 +48,5 @@ describe('Vector', function(){
             a = new Vector([7, 2, 8]);
             expect(a.magnitude).to.equal(10.816653826391969);
         });
-    })
+    });
 })

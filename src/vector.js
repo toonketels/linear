@@ -1,7 +1,13 @@
 'use strict';
 
 function Vector(items) {
-    this.items = items instanceof Array ? items : [items];
+    var _items = items instanceof Array ? items : [items];
+
+    Object.defineProperty(this, 'items', {
+        enumerable: false,
+        configurable: false,
+        get: function() { return _items; }
+    });
 }
 
 Object.defineProperty(Vector.prototype, 'size', {
