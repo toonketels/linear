@@ -60,7 +60,7 @@ describe('Vector', function(){
         });
     });
 
-    describe('dotProduct', function() {
+    describe('dotProduct()', function() {
         it('should throw an error when the argument passed is not a vector', function() {
             var a = new Vector([2, 7]),
                 b = [3, 2, 10],
@@ -90,5 +90,21 @@ describe('Vector', function(){
 
             expect(new Vector([5, 20, 6, 8]).dotProduct(new Vector([2, 7, 11, 3]))).to.equal(240);
         });
-    })
+    });
+
+    describe('scale()', function() {
+        it('should throw an error when the value passed is not a scalar', function() {
+            var a = new Vector([6, 2, 11]);
+            expect(function() { a.scale('something'); }).to.throw(/Vectors can only be scaled by numbers/);
+            expect(function() { a.scale(1.2); }).not.to.throw(/Vectors can only be scaled by numbers/);
+            expect(function() { a.scale(-20); }).not.to.throw(/Vectors can only be scaled by numbers/);
+        });
+
+        it('should return a new vector, a scaled version of the current one', function() {
+            var a = new Vector([12, 4, 7]),
+                scaled = a.scale(3);
+            expect(scaled).to.be.instanceof(Vector);
+            expect(scaled.items).to.deep.equal([36, 12, 21]);
+        });
+    });
 })

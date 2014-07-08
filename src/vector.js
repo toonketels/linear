@@ -36,4 +36,19 @@ Vector.prototype.dotProduct = function dotProduct(vector) {
     }, 0);
 }
 
+Vector.prototype.scale = function scale(scalar) {
+    if (!isNumber(scalar)) throw new Error('Vectors can only be scaled by numbers');
+
+    return new Vector(this.items.map(function(val, index) { return val * scalar; }));
+}
+
+//
+// Helpers...
+// 
+
+function isNumber(number) {
+    return typeof number === 'number' && isFinite(number);
+}
+
+
 module.exports = Vector;
