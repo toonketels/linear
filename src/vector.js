@@ -25,6 +25,15 @@ Object.defineProperty(Vector.prototype, 'magnitude', {
         }, 0);
         return Math.sqrt(squaredSum);
     }
-})
+});
+
+Vector.prototype.dotProduct = function dotProduct(vector) {
+    if (!(vector instanceof Vector)) throw new Error('dotProduct need a vector passed as argument');
+    if (this.size !== vector.size) throw new Error('dotProduct need two vectors of equal size');
+
+    return this.items.reduce(function(memo, val, index) {
+        return memo + (val*vector.items[index]);
+    }, 0);
+}
 
 module.exports = Vector;

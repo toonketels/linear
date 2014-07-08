@@ -59,4 +59,36 @@ describe('Vector', function(){
             expect(a.magnitude).to.equal(10.816653826391969);
         });
     });
+
+    describe('dotProduct', function() {
+        it('should throw an error when the argument passed is not a vector', function() {
+            var a = new Vector([2, 7]),
+                b = [3, 2, 10],
+                fn = function() {
+                    a.dotProduct(b)
+                };
+
+            expect(fn).to.throw(/dotProduct need a vector passed as argument/);
+        });
+
+        it('should throw an error when the vectors are of different size', function() {
+            var a = new Vector([2, 7]),
+                b = new Vector([3, 2, 10]),
+                fn = function() {
+                    a.dotProduct(b)
+                };
+
+            expect(fn).to.throw(/dotProduct need two vectors of equal size/);
+        });
+
+        it('should return the dot product of the two vectors', function() {
+            var a = new Vector([2, 7]),
+                b = new Vector([3, 1]);
+
+            expect(a.dotProduct(b)).to.equal(13);
+            expect(a.dotProduct(new Vector([10, 3]))).to.equal(41);
+
+            expect(new Vector([5, 20, 6, 8]).dotProduct(new Vector([2, 7, 11, 3]))).to.equal(240);
+        });
+    })
 })
