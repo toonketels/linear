@@ -1,0 +1,44 @@
+/**
+ * Linting settings - used by grunt-contrib-jshint
+ *
+ * @see http://www.jshint.com/docs/options
+ */
+
+{
+// Configuration - true means a rule is enforced ( made stricter )
+
+  "bitwise": true,							// Bitwise operations are not allowed (like &)
+  "camelcase": true,						// Variable names should be camelCased
+  "eqeqeq": true,							// Enfore strict comparison - to prevent type coercion errors
+  "forin": true,							// For in loops should filter with "hasOwnProperty"
+  "freeze": true,							// Disallow overriding native objects
+  "immed": true,							// Immediate functions invocations should have parens - like (function() {})()
+  "indent": 4,
+  "latedef": "nofunc",						// Variable should be defined before used
+  "noempty": true,							// Blocks should contain code - just readabiliy improvement
+  "quotmark": "single",						// We must use signle quotes
+  "undef": true,							// Variables should always be defined - var
+  "unused": "vars",							// Variable should be used - if not, it has no place in code
+  "strict": true,							// We must run in strict mode - @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode
+  "trailing": true,
+
+  "curly": false,							// Allow omission of curly braces so we can do if (condition) do
+  "plusplus": false,						// We can use ++ or --
+  "newcap": false,              // Dont force constructors to be capitalized - idea is good, but implementation in jshint is not smart enough
+
+
+// Relaxing options - true means we can do stuff otherwise not allowed
+
+  "boss": true,								// Allow assignments where equality check is expected
+  "debug": true,							// Allow 'debugger' statement in code - SHOULD BE REMOVED IN PRODUCTION
+
+
+// Environment settings - basically states which globals are allowed
+
+  "browser": false,							// Set to browser environment
+  "node": true,								// Set to node environment - we do this because we use browserify
+  "devel": true,							// Allow console.log and such
+  "jquery": true,							// jQuery is not exposed as a global variable - but require'ed
+
+  "globals": { "require": false, "define": false }
+}
