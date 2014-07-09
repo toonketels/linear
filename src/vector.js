@@ -35,18 +35,18 @@ Vector.prototype.dotProduct = function dotProduct(vector) {
         return memo + (val*vector.items[index]);
     }, 0);
 }
-
+;
 Vector.prototype.scale = function scale(scalar) {
     if (!isNumber(scalar)) throw new Error('Vectors can only be scaled by numbers');
 
     return new Vector(this.items.map(function(val, index) { return val * scalar; }));
-}
+};
 
 Vector.prototype.add = function add(vector) {
     if (!(vector instanceof Vector)) throw new Error('Vectors can only be added to vectors');
     if (this.size !== vector.size) throw new Error('Only vectors of equal size can be added');
     return new Vector(this.items.map(function(val, index) { return val + vector.items[index]; }));
-}
+};
 
 //
 // Helpers...
