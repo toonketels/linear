@@ -42,9 +42,15 @@ Vector.prototype.scale = function scale(scalar) {
     return new Vector(this.items.map(function(val, index) { return val * scalar; }));
 }
 
+Vector.prototype.add = function add(vector) {
+    if (!(vector instanceof Vector)) throw new Error('Vectors can only be added to vectors');
+    if (this.size !== vector.size) throw new Error('Only vectors of equal size can be added');
+    return new Vector(this.items.map(function(val, index) { return val + vector.items[index]; }));
+}
+
 //
 // Helpers...
-// 
+//
 
 function isNumber(number) {
     return typeof number === 'number' && isFinite(number);

@@ -107,4 +107,25 @@ describe('Vector', function(){
             expect(scaled.items).to.deep.equal([36, 12, 21]);
         });
     });
+
+    describe('add()', function() {
+        it('should throw an error when the value passed is not a vector', function() {
+            var a = new Vector([3, 7,4]);
+            expect(function() { a.add(4); }).to.throw(/Vectors can only be added to vectors/);
+        });
+
+        it('should throw an error when the vector passed is not of equal size', function() {
+            var a = new Vector([3, 7,4]);
+            expect(function() { a.add(new Vector([2, 5])); }).to.throw(/Only vectors of equal size can be added/);
+        });
+
+        it('should return a new vector which is the sum of the two', function() {
+            var a = new Vector([3, 7,4]),
+                b = new Vector([2, 3, 1]),
+                summed = a.add(b);
+
+            expect(summed).to.be.instanceof(Vector);
+            expect(summed.items).to.deep.equal([5, 10, 5]);
+        });
+    });
 })
